@@ -1,6 +1,7 @@
 {{ config(materialized='table') }}
 select to_date(DATE, 'mm/dd/yyyy') as DATE,
-to_char(to_date(DATE, 'mm/dd/yyyy'), 'mon-yy') as Month
+to_char(to_date(DATE, 'mm/dd/yyyy'), 'mon-yy') as Month,
+to_date('01' || to_char(to_date(DATE, 'mm/dd/yyyy'), '-mm-yy'), 'dd-mm-yy') as Month_START
 ,TOTAL_CASES
 ,NEW_CASES
 ,NEW_ACTIVE_CASES
